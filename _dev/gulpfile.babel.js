@@ -16,7 +16,7 @@ import watch from 'gulp-watch';
 // const
 const SRC = './src';
 const CONFIG = './src/config';
-const DEST = '../public';
+const DEST = '../';
 
 // css
 gulp.task('sass', () => {
