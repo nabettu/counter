@@ -1,0 +1,32 @@
+extends layout/DefaultLayout
+
+prepend ConfigBlock
+  - page_name = ''
+
+//- append StylesheetBlock
+
+//- append JavascriptBlock
+
+block ContentBlock
+
+  h1 文字数カウンター
+  textarea.js-input
+  br
+  button.js-reset 消去
+  p 改行は含めません
+  p
+    | 文字数:
+    span.js-output_count 0
+    | 文字
+  p
+    | スペース抜き文字数:
+    span.js-output_count_nospace 0
+    | 文字
+  p
+    | 行数:
+    span.js-output_line 0
+    | 行
+  p
+    | 段落:
+    span.js-output_para 0
+    | 段落
