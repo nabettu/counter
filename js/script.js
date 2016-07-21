@@ -9862,19 +9862,11 @@ var Count = function () {
       var text = self.$input.val();
       var count = text.replace(/\r\n|\n/g, "").length;
       var count_nos = text.replace(/\s|\r\n|\n/g, "").length;
-      var line = text.match(/\r\n|\n/g);
-      if (line) {
-        line = line.length + 1;
-      } else {
-        line = 0 + (!!count - 0);
-      }
-      var para = text.match(/\r\n{2,}|\n{2,}/g);
-      if (para) {
-        para = para.length + 1;
-      } else {
-        para = 0 + (!!count - 0);
-      }
+      var line = text.match(/\r\n|\n/g) ? text.match(/\r\n|\n/g).length + 1 : 0 + (!!count - 0);
+      var para = text.match(/\r\n{2,}|\n{2,}/g) ? text.match(/\r\n{2,}|\n{2,}/g).length + 1 : 0 + (!!count - 0);
       self.$output_c.text(count);
+      self.$output_g.text(count > 0 ? (count - 1) / 400 | 0 ? ((count - 1) / 400 | 0) + 1 : 1 : 0);
+      self.$output_g.text((count - 1) / 400 | 0 ? ((count - 1) / 400 | 0) + 1 : !!count - 0);
       self.$output_cs.text(count_nos);
       self.$output_l.text(line);
       self.$output_p.text(para);
@@ -9904,6 +9896,7 @@ var doms = {
   $reset: (0, _jquery2.default)(".js-reset"),
   $output_c: (0, _jquery2.default)(".js-output_count"),
   $output_cs: (0, _jquery2.default)(".js-output_count_nospace"),
+  $output_g: (0, _jquery2.default)(".js-output_g"),
   $output_l: (0, _jquery2.default)(".js-output_line"),
   $output_p: (0, _jquery2.default)(".js-output_para")
 };

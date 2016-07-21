@@ -24,19 +24,11 @@ export default class Count {
     let text = self.$input.val()
     let count = text.replace(/\r\n|\n/g, "").length
     let count_nos = text.replace(/\s|\r\n|\n/g, "").length
-    let line = text.match(/\r\n|\n/g)
-    if (line) {
-      line = line.length + 1
-    } else {
-      line = 0 + (!!count - 0)
-    }
-    let para = text.match(/\r\n{2,}|\n{2,}/g)
-    if (para) {
-      para = para.length + 1
-    } else {
-      para = 0 + (!!count - 0)
-    }
+    let line = text.match(/\r\n|\n/g) ? text.match(/\r\n|\n/g).length + 1 : 0 + (!!count - 0)
+    let para = text.match(/\r\n{2,}|\n{2,}/g) ? text.match(/\r\n{2,}|\n{2,}/g).length + 1 : 0 + (!!count - 0)
     self.$output_c.text(count)
+    self.$output_g.text(count > 0 ? ((count - 1) / 400) | 0 ? (((count - 1) / 400) | 0) + 1 : 1 : 0)
+    self.$output_g.text(((count - 1) / 400) | 0 ? (((count - 1) / 400) | 0) + 1 : !!count - 0)
     self.$output_cs.text(count_nos)
     self.$output_l.text(line)
     self.$output_p.text(para)
